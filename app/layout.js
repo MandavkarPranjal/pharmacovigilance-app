@@ -14,8 +14,8 @@ const open_sans = Open_Sans({
 });
 
 export const metadata = {
-  title: "ZenBrew Coffee",
-  description: "ZenBrew's Website",
+  title: "Indian Phramacovigilance",
+  description: "PCU Pharmacovigilance",
 };
 
 export default function RootLayout({ children }) {

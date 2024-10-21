@@ -1,8 +1,11 @@
 "use client";
-// import Separator from "./Separator";
-// import Badge from "./Badge";
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
 
 const Hero = () => {
+    // State to handle modal open/close
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <section className="h-[80vh] xl:h-screen relative text-white">
             {/* overlay */}
@@ -24,7 +27,7 @@ const Hero = () => {
                     data-scroll-speed="0.4"
                     className="flex-1 flex flex-col text-center justify-center items-center xl:pb-12 gap-10 h-full"
                 >
-                    {/* badge and h1 */}
+                    {/* h1 */}
                     <div className="flex flex-col items-center">
                         <h1 className="h1 text-white">
                             <span className="text-accent">
@@ -37,9 +40,47 @@ const Hero = () => {
                         Ensuring patient safety through vigilant monitoring and
                         proactive management of drug-related risks.
                     </p>
-                    <button className="btn">Know More</button>
+                    <button
+                        className="btn"
+                        onClick={() => setIsOpen(true)}
+                    >
+                        Know More
+                    </button>
                 </div>
             </div>
+
+            {/* Modal */}
+            <Dialog
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+                className="relative z-50"
+            >
+                {/* Modal content */}
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-70"
+                    aria-hidden="true"
+                >
+                </div>
+
+                <div className="fixed inset-0 flex items-center justify-center">
+                    <div className="bg-black rounded-lg p-6 relative">
+                        <button
+                            className="absolute top-2 right-2 text-black"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            ✖
+                        </button>
+
+                        <video width="600" controls autoPlay>
+                            <source
+                                src="/assets/Drug-Safety.mp4"
+                                type="video/mp4"
+                            />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </Dialog>
         </section>
     );
 };
